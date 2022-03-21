@@ -4,10 +4,9 @@ Explain under which circumstances *Tight Class Cohesion* (TCC) and *Loose Class 
 
 ## Answer
 
-TCC and LCC metrics produce the same value for a given Java Class if there isn't any pairs of methods connected indirectly. Now we are going to build an example : 
+TCC and LCC metrics produce the same value for a given Java Class if there isn't any pairs of methods connected indirectly. Now we are going to show an example we found in the [textbook](https://people.irisa.fr/Benoit.Combemale/pub/course/vv/vv-textbook-v0.1.pdf) : 
 
 ```java
-
 class Group {
     private int weight;
     private String name;
@@ -24,7 +23,6 @@ class Group {
         Screen.rectangle(color, name);
     }
 }
-
 ```
 
 Here we haven't any connection between the methods, so TCC = 0 and LCC = 0.
