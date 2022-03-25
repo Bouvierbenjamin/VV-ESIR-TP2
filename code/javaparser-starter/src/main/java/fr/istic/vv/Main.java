@@ -15,6 +15,7 @@ import java.nio.file.Paths;
 
 public class Main {
 
+
     public static void main(String[] args) throws IOException {
         if(args.length == 0) {
             System.err.println("Should provide the path to the source code");
@@ -34,6 +35,4 @@ public class Main {
             return SourceRoot.Callback.Result.DONT_SAVE;
         });
     }
-
-
 }
