@@ -81,7 +81,8 @@ public class GraphViz
     /**
      * Load the config.properties file.
      */
-    private final static String cfgProp = "/private/student/r/er/bebouvier/mdi/VV-ESIR-TP2/code/javaparser-starter/src/main/java/fr/istic/vv/config.properties";
+    //private final static String cfgProp = "/private/student/r/er/bebouvier/mdi/VV-ESIR-TP2/code/javaparser-starter/src/main/java/fr/istic/vv/config.properties";
+    private final static String cfgProp = "/home/benj/Bureau/mdi/VV-ESIR-TP2/code/javaparser-starter/src/main/java/fr/istic/vv/config.properties";
     private final static Properties configFile = new Properties() {
         private final static long serialVersionUID = 1L; {
             try {
@@ -93,8 +94,8 @@ public class GraphViz
     /**
      * The dir. where temporary files will be created.
      */
-  private static String TEMP_DIR = "/private/student/r/er/bebouvier/mdi/VV-ESIR-TP2/code/javaparser-starter";
-
+  //private static String TEMP_DIR = "/private/student/r/er/bebouvier/mdi/VV-ESIR-TP2/code/javaparser-starter";
+    private static String TEMP_DIR = "/home/benj/Bureau/mdi/VV-ESIR-TP2/code/javaparser-starter";
     /**
      * Where is your dot program located? It will be called externally.
      */
@@ -203,6 +204,31 @@ public class GraphViz
             return null;
         } catch (java.io.IOException ioe) { return null; }
     }
+    
+    /**
+     * Returns the graph as an image in binary format.
+     * @param dot_source Source of the graph to be drawn.
+     * @param type Type of the output image to be produced, e.g.: gif, dot, fig, pdf, ps, svg, png.
+     * @param name filename of the dot source.
+     * @return A byte array containing the image of the graph.
+     */
+    public byte[] getGraph(String dot_source, String type, String name)
+    {
+        File dot;
+        byte[] img_stream = null;
+
+        try {
+            dot = writeDotSourceToFile(dot_source,name);
+            /*if (dot != null)
+            {
+                img_stream = get_img_stream(dot, type);
+                if (dot.delete() == false) 
+                    System.err.println("Warning: " + dot.getAbsolutePath() + " could not be deleted!");
+                return img_stream;
+            }*/
+            return null;
+        } catch (java.io.IOException ioe) { return null; }
+    }
 
     /**
      * Writes the graph's image in a file.
@@ -293,13 +319,40 @@ public class GraphViz
                        br.write(str);
                        br.flush();
                        br.close();
-            fout.close();
+            /*fout.close();*/
         }
         catch (Exception e) {
             System.err.println("Error: I/O error while writing the dot source to temp file!");
             return null;
         }
         return temp;
+    }
+    
+    /**
+     * Writes the source of the graph in a file, and returns the written file
+     * as a File object.
+     * @param str Source of the graph (in dot language).
+     * @param name filename
+     * @return The file (as a File object) that contains the source of the graph.
+     */
+    private File writeDotSourceToFile(String str, String name) throws java.io.IOException
+    {
+        File temp;
+        try {
+        	/*temp = File.createTempFile("dorrr",".dot", new File(GraphViz.TEMP_DIR));
+            FileWriter fout = new FileWriter(temp);
+            fout.write(str);*/
+                       BufferedWriter br=new BufferedWriter(new FileWriter(name + ".dot"));
+                       br.write(str);
+                       br.flush();
+                       br.close();
+            //fout.close();
+        }
+        catch (Exception e) {
+            System.err.println("Error: I/O error while writing the dot source to temp file!");
+            return null;
+        }
+        return null;
     }
 
     /**
