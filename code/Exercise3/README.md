@@ -1,5 +1,8 @@
 # Code of your exercise
 
+Our first version of the <value> was ```/IfStatement/Statement/Block/BlockStatement/Statement/IfStatement/Statement/Block/BlockStatement/Statement/IfStatement``` because we didn't know how to create a rule which would find all the ifs wherever they were in the "nested chain".
+So it couldn't work with not direct children like when one if is inside a "for" loop or any other statement. So we modified it to ```/IfStatement//IfStatement//IfStatement``` and now it's possible to catch them all.
+
 ```xml
 <?xml version="1.0"?>
 
@@ -36,5 +39,3 @@
 </ruleset>
 ```
 
-Our first version of the <value> was ```/IfStatement/Statement/Block/BlockStatement/Statement/IfStatement/Statement/Block/BlockStatement/Statement/IfStatement``` because we didn't know how to create a rule which would find all the ifs wherever they were in the "nested chain".
-So it couldn't work with not direct children like when one if is inside a "for" loop or any other statement. So we modified it to ```/IfStatement//IfStatement//IfStatement``` and now it's possible to catch them all.
