@@ -1,5 +1,7 @@
 # Code of your exercise
 
+We could upgrade our detector of no-getter by verifying the body of the method. But we decided to read only the name of the getter. We don't know if a getter should always be a ```return value;```.
+
 ```java
 package fr.istic.vv;
 
@@ -64,5 +66,3 @@ public class NoGetter extends VoidVisitorWithDefaults<Void> {
 }
 
 ```
-
-We could upgrade our dettector of no-getter by verify the body of the method. But we decided to read only the name of the getter. We don't know if a getter should allways be a ```return value;```.
